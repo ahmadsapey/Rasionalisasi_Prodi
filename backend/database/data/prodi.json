@@ -1,0 +1,20 @@
+[
+    {
+        "universitas": "Universitas Indonesia",
+        "prodi": "Sistem Informasi",
+        "passing_grade": 88.5,
+        "kuota": 45
+    },
+    {
+        "universitas": "Universitas Padjadjaran",
+        "prodi": "Ilmu Komunikasi",
+        "passing_grade": 86.0,
+        "kuota": 80
+    },
+    {
+        "universitas": "UPN Veteran Jakarta",
+        "prodi": "Sistem Informasi",
+        "passing_grade": 82.0,
+        "kuota": 60
+    }
+]
