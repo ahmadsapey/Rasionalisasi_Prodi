@@ -7,7 +7,25 @@ use Tests\TestCase;
 class RasionalisasiTest extends TestCase
 {
     /**
-     * Test validasi jika parameter nilai tidak dikirim.
+     * Test mendapatkan daftar universitas dan program studi.
+     */
+    public function test_dapat_mengambil_daftar_prodi(): void
+    {
+        $response = $this->getJson('/api/prodi');
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'status' => 'success',
+            ])
+            ->assertJsonStructure([
+                'status',
+                'message',
+                'data',
+            ]);
+    }
+
+    /**
+     * Test validasi jika parameter nilai/semester tidak dikirim.
      */
     public function test_validasi_gagal_jika_nilai_kosong(): void
     {
@@ -22,69 +40,44 @@ class RasionalisasiTest extends TestCase
     }
 
     /**
-     * Test validasi jika nilai melebihi 100 atau bernilai negatif.
+     * Test kalkulasi detail dengan universitas, prodi, dan nilai rapot semester 1-5.
      */
-    public function test_validasi_gagal_jika_nilai_di_luar_rentang(): void
-    {
-        // Nilai > 100
-        $responseMax = $this->postJson('/api/rasionalisasi', ['nilai' => 105]);
-        $responseMax->assertStatus(422)
-            ->assertJsonValidationErrors(['nilai']);
-
-        // Nilai < 0
-        $responseMin = $this->postJson('/api/rasionalisasi', ['nilai' => -10]);
-        $responseMin->assertStatus(422)
-            ->assertJsonValidationErrors(['nilai']);
-
-        // Nilai bukan angka
-        $responseType = $this->postJson('/api/rasionalisasi', ['nilai' => 'bukan_angka']);
-        $responseType->assertStatus(422)
-            ->assertJsonValidationErrors(['nilai']);
-    }
-
-    /**
-     * Test kalkulasi rasionalisasi berhasil dan menghasilkan urutan rekomendasi yang tepat.
-     */
-    public function test_kalkulasi_rasionalisasi_berhasil(): void
+    public function test_kalkulasi_detail_berhasil(): void
     {
         $response = $this->postJson('/api/rasionalisasi', [
-            'nilai' => 85.0,
+            'universitas' => 'Universitas Negeri Semarang',
+            'prodi' => 'Teknik Informatika',
+            'nilai_semester' => [88, 90, 91, 92, 93],
+            'akreditasi' => 'B',
+            'nama' => 'Alya Putri',
         ]);
 
         $response->assertStatus(200)
+            ->assertJson([
+                'status' => 'success',
+                'data' => [
+                    'mode' => 'single_prediction',
+                    'universitas' => 'Universitas Negeri Semarang',
+                    'prodi' => 'Teknik Informatika (S1)',
+                ],
+            ])
             ->assertJsonStructure([
                 'status',
                 'message',
-                'nilai_input',
-                'total_rekomendasi',
                 'data' => [
-                    '*' => [
-                        'universitas',
-                        'prodi',
-                        'passing_grade',
-                        'kuota',
-                        'selisih',
-                        'status',
-                        'badge',
-                    ],
+                    'mode',
+                    'universitas',
+                    'prodi',
+                    'rata_rata_rapot',
+                    'skor_prediksi',
+                    'skor_aman',
+                    'keterangan_persen',
+                    'kuota',
+                    'peminat',
+                    'kategori',
+                    'peluang',
+                    'deskripsi',
                 ],
-            ])
-            ->assertJson([
-                'status'      => 'success',
-                'nilai_input' => 85.0,
             ]);
-
-        // Pastikan hasil terurut descending berdasarkan selisih
-        $data = $response->json('data');
-        $this->assertNotEmpty($data);
-
-        for ($i = 0; $i < count($data) - 1; $i++) {
-            $this->assertGreaterThanOrEqual(
-                $data[$i + 1]['selisih'],
-                $data[$i]['selisih'],
-                'Rekomendasi prodi harus terurut menurun berdasarkan selisih'
-            );
-        }
     }
 }
-
