@@ -188,7 +188,8 @@
               <input
                 id="nama"
                 type="text"
-                value="Alya Putri"
+                value=""
+                placeholder="Masukkan nama siswa..."
                 class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm font-medium text-slate-800 transition-all focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10"
               />
             </div>
@@ -383,7 +384,7 @@
         >
           <div
             id="resultEmpty"
-            style="display: none"
+            style="display: flex"
             class="min-h-[580px] flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/50 text-center p-8"
           >
             <div
@@ -402,7 +403,7 @@
 
           <div
             id="resultCard"
-            style="display: flex"
+            style="display: none"
             class="flex-col flex-1 justify-between gap-6"
           >
             <div>
@@ -1657,10 +1658,14 @@ let data = {
 
         if (currentUniv && data[currentUniv]) {
           ptnSelect.value = currentUniv;
-        } else if (Object.keys(data).length > 0) {
-          ptnSelect.value = Object.keys(data)[0];
+          ptnSelect.dispatchEvent(new Event("change"));
+        } else {
+          ptnSelect.value = "";
+          prodiSelect.innerHTML = '<option value="">Pilih program studi</option>';
+          prodiSelect.disabled = true;
+          resultEmpty.style.display = "flex";
+          resultCard.style.display = "none";
         }
-        ptnSelect.dispatchEvent(new Event("change"));
       }
 
       // Ambil data prodi dinamis dari Laravel API
@@ -1916,13 +1921,12 @@ let data = {
         });
 
         prodiSelect.disabled = false;
-        if (prodis.length > 0) {
-          prodiSelect.value = prodis[0];
-        }
-        renderPrediction();
+        prodiSelect.value = "";
+        resultEmpty.style.display = "flex";
+        resultCard.style.display = "none";
       });
 
-      ["s1", "s2", "s3", "s4", "s5", "akreditasi", "prodi"].forEach((id) => {
+      ["s1", "s2", "s3", "s4", "s5", "akreditasi", "prodi", "nama"].forEach((id) => {
         const element = document.getElementById(id);
         if (element) {
           element.addEventListener("input", renderPrediction);
