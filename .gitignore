@@ -25,3 +25,4 @@ Thumbs.db
 /backend/storage/framework/views/*
 /backend/storage/logs/*
 
+.vercel
