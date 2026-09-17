@@ -194,31 +194,115 @@
               />
             </div>
 
-            <div>
+            <!-- Searchable Combobox Universitas -->
+            <div class="relative" id="combobox-ptn-container">
               <label
-                for="ptn"
+                for="ptn-search"
                 class="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-500"
                 >Universitas</label
               >
-              <select
-                id="ptn"
-                class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm font-medium text-slate-800 transition-all focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10"
-              >
+              <div class="relative">
+                <input
+                  id="ptn-search"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="Ketik untuk mencari universitas..."
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 pl-11 pr-16 py-3 text-sm font-medium text-slate-800 transition-all focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10"
+                />
+                <!-- Search Icon -->
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                  </svg>
+                </div>
+                <!-- Controls (Clear & Dropdown arrow) -->
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 space-x-1">
+                  <button
+                    type="button"
+                    id="ptn-clear"
+                    class="hidden rounded-full p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-600 transition-colors"
+                    title="Hapus pilihan"
+                  >
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    id="ptn-dropdown-btn"
+                    class="rounded-full p-1 text-slate-400 hover:text-slate-600 transition-colors"
+                    tabindex="-1"
+                  >
+                    <svg class="h-4 w-4 transition-transform duration-200" id="ptn-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Dropdown Menu -->
+              <div
+                id="ptn-menu"
+                class="hidden absolute left-0 right-0 top-full mt-2 z-50 max-h-64 overflow-y-auto rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl transition-all"
+              ></div>
+              <!-- Hidden native select for compatibility -->
+              <select id="ptn" class="hidden">
                 <option value="">Pilih Universitas</option>
               </select>
             </div>
 
-            <div>
+            <!-- Searchable Combobox Program Studi -->
+            <div class="relative" id="combobox-prodi-container">
               <label
-                for="prodi"
+                for="prodi-search"
                 class="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-500"
                 >Program Studi</label
               >
-              <select
-                id="prodi"
-                class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm font-medium text-slate-800 transition-all focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10 disabled:opacity-50"
-                disabled
-              >
+              <div class="relative">
+                <input
+                  id="prodi-search"
+                  type="text"
+                  autocomplete="off"
+                  disabled
+                  placeholder="Pilih universitas terlebih dahulu..."
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 pl-11 pr-16 py-3 text-sm font-medium text-slate-800 transition-all focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10 disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+                <!-- Book/Major Icon -->
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                  </svg>
+                </div>
+                <!-- Controls (Clear & Dropdown arrow) -->
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 space-x-1">
+                  <button
+                    type="button"
+                    id="prodi-clear"
+                    class="hidden rounded-full p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-600 transition-colors"
+                    title="Hapus pilihan"
+                  >
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    id="prodi-dropdown-btn"
+                    class="rounded-full p-1 text-slate-400 hover:text-slate-600 transition-colors"
+                    tabindex="-1"
+                  >
+                    <svg class="h-4 w-4 transition-transform duration-200" id="prodi-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Dropdown Menu -->
+              <div
+                id="prodi-menu"
+                class="hidden absolute left-0 right-0 top-full mt-2 z-50 max-h-64 overflow-y-auto rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl transition-all"
+              ></div>
+              <!-- Hidden native select for compatibility -->
+              <select id="prodi" class="hidden" disabled>
                 <option value="">Pilih program studi</option>
               </select>
             </div>
@@ -3868,6 +3952,19 @@
       const resultEmpty = document.getElementById("resultEmpty");
       const resultCard = document.getElementById("resultCard");
 
+      // Combobox Elements
+      const ptnSearchInput = document.getElementById("ptn-search");
+      const ptnMenu = document.getElementById("ptn-menu");
+      const ptnClearBtn = document.getElementById("ptn-clear");
+      const ptnDropdownBtn = document.getElementById("ptn-dropdown-btn");
+      const ptnChevron = document.getElementById("ptn-chevron");
+
+      const prodiSearchInput = document.getElementById("prodi-search");
+      const prodiMenu = document.getElementById("prodi-menu");
+      const prodiClearBtn = document.getElementById("prodi-clear");
+      const prodiDropdownBtn = document.getElementById("prodi-dropdown-btn");
+      const prodiChevron = document.getElementById("prodi-chevron");
+
       function populateUniversityDropdown() {
         const currentUniv = ptnSelect.value;
         ptnSelect.innerHTML = '<option value="">Pilih Universitas</option>';
@@ -3889,6 +3986,8 @@
           resultEmpty.style.display = "flex";
           resultCard.style.display = "none";
         }
+        if (typeof syncPtnUi === "function") syncPtnUi();
+        if (typeof syncProdiUi === "function") syncProdiUi();
       }
 
       // Ambil data prodi dinamis dari Laravel API
@@ -4124,12 +4223,275 @@
         }, 200);
       }
 
+      function openPtnMenu() {
+        ptnMenu.classList.remove("hidden");
+        ptnChevron.classList.add("rotate-180");
+      }
+
+      function closePtnMenu() {
+        ptnMenu.classList.add("hidden");
+        ptnChevron.classList.remove("rotate-180");
+        if (ptnSelect.value) {
+          ptnSearchInput.value = ptnSelect.value;
+        } else {
+          ptnSearchInput.value = "";
+        }
+        ptnClearBtn.classList.toggle("hidden", !ptnSelect.value);
+      }
+
+      function openProdiMenu() {
+        if (prodiSearchInput.disabled) return;
+        prodiMenu.classList.remove("hidden");
+        prodiChevron.classList.add("rotate-180");
+      }
+
+      function closeProdiMenu() {
+        prodiMenu.classList.add("hidden");
+        prodiChevron.classList.remove("rotate-180");
+        if (prodiSelect.value) {
+          prodiSearchInput.value = prodiSelect.value;
+        } else {
+          prodiSearchInput.value = "";
+        }
+        prodiClearBtn.classList.toggle("hidden", !prodiSelect.value);
+      }
+
+      function renderPtnMenu(filterText = "") {
+        ptnMenu.innerHTML = "";
+        const query = filterText.toLowerCase().trim();
+        const univs = Object.keys(data).filter(
+          (u) => !query || u.toLowerCase().includes(query)
+        );
+
+        if (univs.length === 0) {
+          ptnMenu.innerHTML =
+            '<div class="px-4 py-3 text-xs text-slate-400 text-center font-medium">Universitas tidak ditemukan</div>';
+          return;
+        }
+
+        univs.forEach((univ) => {
+          const item = document.createElement("div");
+          item.className =
+            "px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 cursor-pointer transition-colors flex items-center justify-between";
+          item.textContent = univ;
+
+          if (univ === ptnSelect.value) {
+            item.classList.add("bg-brand-50", "text-brand-600", "font-semibold");
+          }
+
+          item.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            selectUniversity(univ);
+          });
+          ptnMenu.appendChild(item);
+        });
+      }
+
+      function selectUniversity(univ) {
+        ptnSelect.value = univ;
+        ptnSearchInput.value = univ;
+        ptnClearBtn.classList.remove("hidden");
+        closePtnMenu();
+        ptnSelect.dispatchEvent(new Event("change"));
+        setTimeout(() => {
+          prodiSearchInput.focus();
+          openProdiMenu();
+          renderProdiMenu("");
+        }, 60);
+      }
+
+      function renderProdiMenu(filterText = "") {
+        prodiMenu.innerHTML = "";
+        const currentUniv = ptnSelect.value;
+        if (!currentUniv || !data[currentUniv]) {
+          prodiMenu.innerHTML =
+            '<div class="px-4 py-3 text-xs text-slate-400 text-center font-medium">Pilih universitas terlebih dahulu</div>';
+          return;
+        }
+
+        const query = filterText.toLowerCase().trim();
+        const prodis = Object.keys(data[currentUniv]).filter(
+          (p) => !query || p.toLowerCase().includes(query)
+        );
+
+        if (prodis.length === 0) {
+          prodiMenu.innerHTML =
+            '<div class="px-4 py-3 text-xs text-slate-400 text-center font-medium">Program studi tidak ditemukan</div>';
+          return;
+        }
+
+        prodis.forEach((prodiName) => {
+          const prodiInfo = data[currentUniv][prodiName];
+          const item = document.createElement("div");
+          item.className =
+            "px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600 cursor-pointer transition-colors flex items-center justify-between gap-2";
+
+          const peminatanBadge = prodiInfo?.peminatan
+            ? `<span class="shrink-0 text-[11px] px-2 py-0.5 rounded-md bg-slate-100 text-slate-500 font-semibold">${prodiInfo.peminatan}</span>`
+            : "";
+
+          item.innerHTML = `
+            <span class="truncate">${prodiName}</span>
+            ${peminatanBadge}
+          `;
+
+          if (prodiName === prodiSelect.value) {
+            item.classList.add("bg-brand-50", "text-brand-600", "font-semibold");
+          }
+
+          item.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            selectProdi(prodiName);
+          });
+          prodiMenu.appendChild(item);
+        });
+      }
+
+      function selectProdi(prodiName) {
+        prodiSelect.value = prodiName;
+        prodiSearchInput.value = prodiName;
+        prodiClearBtn.classList.remove("hidden");
+        closeProdiMenu();
+        prodiSelect.dispatchEvent(new Event("change"));
+      }
+
+      function syncPtnUi() {
+        if (ptnSelect.value) {
+          ptnSearchInput.value = ptnSelect.value;
+          ptnClearBtn.classList.remove("hidden");
+        } else {
+          ptnSearchInput.value = "";
+          ptnClearBtn.classList.add("hidden");
+        }
+      }
+
+      function syncProdiUi() {
+        if (ptnSelect.value && data[ptnSelect.value]) {
+          prodiSearchInput.disabled = false;
+          prodiSearchInput.placeholder = "Ketik atau cari program studi...";
+          if (prodiSelect.value) {
+            prodiSearchInput.value = prodiSelect.value;
+            prodiClearBtn.classList.remove("hidden");
+          } else {
+            prodiSearchInput.value = "";
+            prodiClearBtn.classList.add("hidden");
+          }
+        } else {
+          prodiSearchInput.disabled = true;
+          prodiSearchInput.placeholder = "Pilih universitas terlebih dahulu...";
+          prodiSearchInput.value = "";
+          prodiClearBtn.classList.add("hidden");
+        }
+      }
+
+      // Event listeners for PTN Search
+      ptnSearchInput.addEventListener("focus", () => {
+        renderPtnMenu(ptnSearchInput.value);
+        openPtnMenu();
+      });
+
+      ptnSearchInput.addEventListener("input", function () {
+        ptnClearBtn.classList.toggle("hidden", this.value.length === 0);
+        renderPtnMenu(this.value);
+        openPtnMenu();
+      });
+
+      ptnSearchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closePtnMenu();
+        } else if (e.key === "Enter") {
+          e.preventDefault();
+          const firstItem = ptnMenu.querySelector("div[class*='cursor-pointer']");
+          if (firstItem) firstItem.click();
+        }
+      });
+
+      ptnDropdownBtn.addEventListener("click", () => {
+        if (ptnMenu.classList.contains("hidden")) {
+          renderPtnMenu(ptnSearchInput.value);
+          openPtnMenu();
+          ptnSearchInput.focus();
+        } else {
+          closePtnMenu();
+        }
+      });
+
+      ptnClearBtn.addEventListener("click", () => {
+        ptnSelect.value = "";
+        ptnSearchInput.value = "";
+        ptnClearBtn.classList.add("hidden");
+        ptnSelect.dispatchEvent(new Event("change"));
+        renderPtnMenu("");
+        openPtnMenu();
+        ptnSearchInput.focus();
+      });
+
+      // Event listeners for Prodi Search
+      prodiSearchInput.addEventListener("focus", () => {
+        if (prodiSearchInput.disabled) return;
+        renderProdiMenu(prodiSearchInput.value);
+        openProdiMenu();
+      });
+
+      prodiSearchInput.addEventListener("input", function () {
+        if (prodiSearchInput.disabled) return;
+        prodiClearBtn.classList.toggle("hidden", this.value.length === 0);
+        renderProdiMenu(this.value);
+        openProdiMenu();
+      });
+
+      prodiSearchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeProdiMenu();
+        } else if (e.key === "Enter") {
+          e.preventDefault();
+          const firstItem = prodiMenu.querySelector("div[class*='cursor-pointer']");
+          if (firstItem) firstItem.click();
+        }
+      });
+
+      prodiDropdownBtn.addEventListener("click", () => {
+        if (prodiSearchInput.disabled) return;
+        if (prodiMenu.classList.contains("hidden")) {
+          renderProdiMenu(prodiSearchInput.value);
+          openProdiMenu();
+          prodiSearchInput.focus();
+        } else {
+          closeProdiMenu();
+        }
+      });
+
+      prodiClearBtn.addEventListener("click", () => {
+        prodiSelect.value = "";
+        prodiSearchInput.value = "";
+        prodiClearBtn.classList.add("hidden");
+        prodiSelect.dispatchEvent(new Event("change"));
+        renderProdiMenu("");
+        openProdiMenu();
+        prodiSearchInput.focus();
+      });
+
+      // Close dropdowns when clicking outside
+      document.addEventListener("click", (e) => {
+        const ptnContainer = document.getElementById("combobox-ptn-container");
+        const prodiContainer = document.getElementById("combobox-prodi-container");
+
+        if (ptnContainer && !ptnContainer.contains(e.target)) {
+          closePtnMenu();
+        }
+        if (prodiContainer && !prodiContainer.contains(e.target)) {
+          closeProdiMenu();
+        }
+      });
+
       ptnSelect.addEventListener("change", function () {
         const university = this.value;
         prodiSelect.innerHTML = '<option value="">Pilih program studi</option>';
 
         if (!university || !data[university]) {
           prodiSelect.disabled = true;
+          syncPtnUi();
+          syncProdiUi();
           resultEmpty.style.display = "flex";
           resultCard.style.display = "none";
           return;
@@ -4145,6 +4507,8 @@
 
         prodiSelect.disabled = false;
         prodiSelect.value = "";
+        syncPtnUi();
+        syncProdiUi();
         resultEmpty.style.display = "flex";
         resultCard.style.display = "none";
       });
