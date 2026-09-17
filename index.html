@@ -141,15 +141,6 @@
         </div>
         <div class="flex flex-wrap items-center gap-2 self-start md:self-auto">
           <div
-            id="apiStatusBadge"
-            class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700 shadow-sm"
-          >
-            <span
-              class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"
-            ></span>
-            <span>API Connected</span>
-          </div>
-          <div
             class="inline-flex items-center gap-2 rounded-full border border-brand-200/60 bg-brand-50 px-4 py-2 text-xs sm:text-sm font-semibold text-brand-700 shadow-sm"
           >
             <span
@@ -743,7 +734,6 @@
       const prodiSelect = document.getElementById("prodi");
       const resultEmpty = document.getElementById("resultEmpty");
       const resultCard = document.getElementById("resultCard");
-      const apiStatusBadge = document.getElementById("apiStatusBadge");
 
       function populateUniversityDropdown() {
         const currentUniv = ptnSelect.value;
@@ -771,12 +761,6 @@
             const json = await res.json();
             if (json.data && Object.keys(json.data).length > 0) {
               data = json.data;
-              if (apiStatusBadge) {
-                apiStatusBadge.className =
-                  "inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700 shadow-sm";
-                apiStatusBadge.innerHTML =
-                  '<span class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span><span>Laravel API Active</span>';
-              }
             }
           }
         } catch (e) {
@@ -784,12 +768,6 @@
             "Menggunakan fallback data lokal (server Laravel offline).",
             e,
           );
-          if (apiStatusBadge) {
-            apiStatusBadge.className =
-              "inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-600 shadow-sm";
-            apiStatusBadge.innerHTML =
-              '<span class="h-2 w-2 rounded-full bg-slate-400"></span><span>Offline Mode</span>';
-          }
         } finally {
           populateUniversityDropdown();
         }
