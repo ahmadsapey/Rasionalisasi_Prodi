@@ -2,8 +2,7 @@
 
 /**
  * Serverless Entrypoint for Vercel.
- * Bridges /api requests to Laravel if vendor is present,
- * or serves fast standalone JSON responses from real prodi data.
+ * Handles /api/prodi and /api/rasionalisasi with zero-dependency high performance.
  */
 
 header('Access-Control-Allow-Origin: *');
@@ -15,18 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// 1. If Laravel vendor exists, delegate to Laravel front controller
-$laravelBootstrap = __DIR__ . '/../backend/public/index.php';
-$vendorAutoload = __DIR__ . '/../backend/vendor/autoload.php';
-
-if (file_exists($vendorAutoload) && file_exists($laravelBootstrap)) {
-    require $laravelBootstrap;
-    exit;
-}
-
-// 2. High-performance fallback: Serve directly from prodi.json dataset
-$uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
-$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+$route = $_GET['route'] ?? $_SERVER['REQUEST_URI'] ?? '';
 
 $dataPath = __DIR__ . '/../backend/database/data/prodi.json';
 $prodiList = [];
@@ -35,7 +23,7 @@ if (file_exists($dataPath)) {
 }
 
 // Endpoint: GET /api/prodi
-if (str_contains($uri, '/api/prodi')) {
+if (str_contains($route, 'prodi')) {
     $tree = [];
     foreach ($prodiList as $item) {
         $univ = $item['universitas'];
@@ -59,12 +47,12 @@ if (str_contains($uri, '/api/prodi')) {
         'status' => 'success',
         'message' => 'Daftar universitas dan program studi berhasil diambil.',
         'data' => $tree,
-    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
 // Endpoint: POST /api/rasionalisasi
-if (str_contains($uri, '/api/rasionalisasi')) {
+if (str_contains($route, 'rasionalisasi')) {
     $rawInput = file_get_contents('php://input');
     $payload = json_decode($rawInput, true) ?: $_POST;
 
@@ -154,12 +142,10 @@ if (str_contains($uri, '/api/rasionalisasi')) {
             'chance_percent' => "{$prediction}%",
             'deskripsi' => $description,
         ],
-    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-// Fallback jika rute tidak ditemukan
 http_response_code(404);
 header('Content-Type: application/json; charset=utf-8');
 echo json_encode(['status' => 'error', 'message' => 'Not Found']);
-
