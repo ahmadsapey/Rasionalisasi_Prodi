@@ -1,7 +1,6 @@
 {
   "version": 2,
   "functions": {
-    "backend/api/index.php": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.2"
     }
@@ -9,7 +8,6 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/api/index.php"
       "dest": "/api/index.php"
     },
     {
