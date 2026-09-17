@@ -2,11 +2,11 @@
 
 /**
  * Serverless Entrypoint for Vercel.
- * Serves fast standalone JSON responses from real prodi data,
- * or delegates to Laravel if vendor is present.
- * Handles /api/prodi and /api/rasionalisasi with zero-dependency high performance.
+ * Bridges /api requests to Laravel or serves fast standalone JSON responses.
+ * Handles /api/prodi and /api/rasionalisasi seamlessly.
  */
 
+// Enable CORS
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept');
@@ -16,10 +16,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
+// Normalize routes for serverless rewrites
 $route = $_GET['route'] ?? '';
-$uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+$rawUri = $_SERVER['REQUEST_URI'] ?? '/';
+$parsedPath = parse_url($rawUri, PHP_URL_PATH) ?? '/';
 
-// 1. If Laravel vendor exists, delegate to Laravel front controller
+if (!empty($route)) {
+    $cleanPath = '/api/' . ltrim($route, '/');
+} elseif (preg_match('#^/api/(.+)$#', $parsedPath, $matches)) {
+    $cleanPath = '/api/' . ltrim($matches[1], '/');
+} else {
+    $cleanPath = $parsedPath;
+}
+
+$_SERVER['REQUEST_URI'] = $cleanPath;
+$_SERVER['PATH_INFO'] = $cleanPath;
+$_SERVER['SCRIPT_NAME'] = '/index.php';
+
+// 1. If Laravel vendor and bootstrap exist, delegate to Laravel front controller
 $laravelBootstrap = __DIR__ . '/../backend/public/index.php';
 $vendorAutoload = __DIR__ . '/../backend/vendor/autoload.php';
 
@@ -28,7 +42,7 @@ if (file_exists($vendorAutoload) && file_exists($laravelBootstrap)) {
     exit;
 }
 
-// 2. Standalone fallback: Load prodi.json dataset
+// 2. High-performance fallback: Load prodi dataset directly
 $prodiList = [];
 $candidatePaths = [
     __DIR__ . '/prodi.json',
@@ -46,7 +60,7 @@ foreach ($candidatePaths as $path) {
 }
 
 // Endpoint: GET /api/prodi
-if (str_contains($uri, '/api/prodi') || str_contains($route, 'prodi')) {
+if (str_contains($cleanPath, '/api/prodi') || str_contains($route, 'prodi')) {
     $tree = [];
     foreach ($prodiList as $item) {
         $univ = $item['universitas'];
@@ -75,7 +89,7 @@ if (str_contains($uri, '/api/prodi') || str_contains($route, 'prodi')) {
 }
 
 // Endpoint: POST /api/rasionalisasi
-if (str_contains($uri, '/api/rasionalisasi') || str_contains($route, 'rasionalisasi')) {
+if (str_contains($cleanPath, '/api/rasionalisasi') || str_contains($route, 'rasionalisasi')) {
     $rawInput = file_get_contents('php://input');
     $payload = json_decode($rawInput, true) ?: $_POST;
 
@@ -169,7 +183,7 @@ if (str_contains($uri, '/api/rasionalisasi') || str_contains($route, 'rasionalis
     exit;
 }
 
-// Fallback jika rute tidak ditemukan
+// Fallback jika rute tidak cocok
 http_response_code(404);
 header('Content-Type: application/json; charset=utf-8');
 echo json_encode(['status' => 'error', 'message' => 'Not Found']);
