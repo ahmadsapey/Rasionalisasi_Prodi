@@ -2,8 +2,8 @@
 
 /**
  * Serverless Entrypoint for Vercel.
- * Bridges /api requests to Laravel if vendor is present,
- * or serves fast standalone JSON responses from real prodi data.
+ * Serves fast standalone JSON responses from real prodi data,
+ * or delegates to Laravel if vendor is present.
  * Handles /api/prodi and /api/rasionalisasi with zero-dependency high performance.
  */
 
@@ -16,29 +16,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
+$route = $_GET['route'] ?? '';
+$uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+
 // 1. If Laravel vendor exists, delegate to Laravel front controller
 $laravelBootstrap = __DIR__ . '/../backend/public/index.php';
 $vendorAutoload = __DIR__ . '/../backend/vendor/autoload.php';
-$route = $_GET['route'] ?? $_SERVER['REQUEST_URI'] ?? '';
 
 if (file_exists($vendorAutoload) && file_exists($laravelBootstrap)) {
     require $laravelBootstrap;
     exit;
 }
 
-// 2. High-performance fallback: Serve directly from prodi.json dataset
-$uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
-$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
-
-$dataPath = __DIR__ . '/../backend/database/data/prodi.json';
+// 2. Standalone fallback: Load prodi.json dataset
 $prodiList = [];
-if (file_exists($dataPath)) {
-    $prodiList = json_decode(file_get_contents($dataPath), true) ?: [];
+$candidatePaths = [
+    __DIR__ . '/prodi.json',
+    __DIR__ . '/../backend/database/data/prodi.json',
+];
+
+foreach ($candidatePaths as $path) {
+    if (file_exists($path)) {
+        $content = file_get_contents($path);
+        if ($content) {
+            $prodiList = json_decode($content, true) ?: [];
+            break;
+        }
+    }
 }
 
 // Endpoint: GET /api/prodi
-if (str_contains($uri, '/api/prodi')) {
-if (str_contains($route, 'prodi')) {
+if (str_contains($uri, '/api/prodi') || str_contains($route, 'prodi')) {
     $tree = [];
     foreach ($prodiList as $item) {
         $univ = $item['universitas'];
@@ -62,14 +70,12 @@ if (str_contains($route, 'prodi')) {
         'status' => 'success',
         'message' => 'Daftar universitas dan program studi berhasil diambil.',
         'data' => $tree,
-    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
 // Endpoint: POST /api/rasionalisasi
-if (str_contains($uri, '/api/rasionalisasi')) {
-if (str_contains($route, 'rasionalisasi')) {
+if (str_contains($uri, '/api/rasionalisasi') || str_contains($route, 'rasionalisasi')) {
     $rawInput = file_get_contents('php://input');
     $payload = json_decode($rawInput, true) ?: $_POST;
 
@@ -159,7 +165,6 @@ if (str_contains($route, 'rasionalisasi')) {
             'chance_percent' => "{$prediction}%",
             'deskripsi' => $description,
         ],
-    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -168,4 +173,3 @@ if (str_contains($route, 'rasionalisasi')) {
 http_response_code(404);
 header('Content-Type: application/json; charset=utf-8');
 echo json_encode(['status' => 'error', 'message' => 'Not Found']);
-
