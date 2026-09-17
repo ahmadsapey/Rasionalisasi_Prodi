@@ -611,124 +611,1034 @@
           : "";
 
       // Fallback data lokal jika backend belum dinyalakan
-      let data = {
-        "Universitas Negeri Semarang": {
-          "Teknik Informatika": {
-            quota: 120,
-            peminatan: "IPA / MIPA",
-            status: "Sangat Kompetitif",
-            competition: 91,
-            alumni: 88,
-            description:
-              "Tingkat persaingan sangat tinggi, namun siswa dengan nilai rapot konsisten dan prestasi akademik kuat masih memiliki peluang yang cukup masuk akal pada jurusan ini.",
-          },
-          Akuntansi: {
-            quota: 180,
-            peminatan: "IPS / Sosial",
-            status: "Kompetitif",
-            competition: 76,
-            alumni: 81,
-            description:
-              "Jurusan ini memiliki persaingan yang cukup sehat. Siswa dengan performa akademik stabil, komunikasi baik, dan prestasi yang relevan dapat tetap masuk dengan rasionalitas yang layak.",
-          },
-          "Pendidikan Dokter": {
-            quota: 60,
-            peminatan: "IPA / MIPA",
-            status: "Sangat Kompetitif",
-            competition: 95,
-            alumni: 90,
-            description:
-              "Program studi ini sangat selektif dengan kuota terbatas. Siswa harus memiliki skor rapot sangat tinggi, prestasi ilmiah, serta rekam jejak akademik yang kuat.",
-          },
+let data = {
+        "Institut Pertanian Bogor (IPB University)": {
+                "Kedokteran (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.85,
+                        "description": "Program studi Kedokteran (S1) di Institut Pertanian Bogor (IPB University). Passing grade acuan SNBP nasional adalah 93.85 dengan persaingan yang sangat kompetitif."
+                },
+                "Ilmu Komputer (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.4,
+                        "description": "Program studi Ilmu Komputer (S1) di Institut Pertanian Bogor (IPB University). Passing grade acuan SNBP nasional adalah 93.40 dengan persaingan yang sangat kompetitif."
+                },
+                "Aktuaria (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 92.9,
+                        "description": "Program studi Aktuaria (S1) di Institut Pertanian Bogor (IPB University). Passing grade acuan SNBP nasional adalah 92.90 dengan persaingan yang sangat kompetitif."
+                },
+                "Statistika dan Sains Data (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 91.8,
+                        "description": "Program studi Statistika dan Sains Data (S1) di Institut Pertanian Bogor (IPB University). Passing grade acuan SNBP nasional adalah 91.80 dengan persaingan yang sangat kompetitif."
+                }
         },
-        "Universitas Padjadjaran": {
-          "Sistem Informasi": {
-            quota: 150,
-            peminatan: "IPA / MIPA",
-            status: "Kompetitif",
-            competition: 82,
-            alumni: 84,
-            description:
-              "Sistem Informasi punya daya tarik yang tinggi, terutama untuk siswa dengan kemampuan logika, matematika, dan minat terhadap teknologi.",
-          },
-          Hukum: {
-            quota: 220,
-            peminatan: "IPS / Sosial",
-            status: "Cukup Kompetitif",
-            competition: 72,
-            alumni: 79,
-            description:
-              "Persaingan masih relatif terjaga, sehingga siswa dengan kemampuan literasi dan argumentasi yang kuat memiliki kesempatan yang cukup baik.",
-          },
-          Kedokteran: {
-            quota: 70,
-            peminatan: "IPA / MIPA",
-            status: "Sangat Kompetitif",
-            competition: 96,
-            alumni: 91,
-            description:
-              "Kedokteran merupakan pilihan dengan persaingan sangat ketat. Dibutuhkan konsistensi akademik yang amat tinggi dan prestasi unggulan.",
-          },
+        "Institut Seni Indonesia (ISI) Denpasar": {
+                "Teater (S1)": {
+                        "quota": 120,
+                        "peminatan": "Seni & Desain",
+                        "status": "Cukup Kompetitif",
+                        "competition": 78,
+                        "alumni": 80,
+                        "passing_grade": 83.43,
+                        "description": "Program studi Teater (S1) di Institut Seni Indonesia (ISI) Denpasar. Passing grade acuan SNBP adalah 83.43 dengan peminatan rumpun Seni & Desain."
+                },
+                "Desain Komunikasi Visual (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Cukup Kompetitif",
+                        "competition": 77,
+                        "alumni": 80,
+                        "passing_grade": 83.11,
+                        "description": "Program studi Desain Komunikasi Visual (S1) di Institut Seni Indonesia (ISI) Denpasar. Passing grade acuan SNBP adalah 83.11 dengan peminatan rumpun Sosial & Humaniora."
+                },
+                "Desain Interior (S1)": {
+                        "quota": 120,
+                        "peminatan": "Seni & Desain",
+                        "status": "Cukup Kompetitif",
+                        "competition": 76,
+                        "alumni": 79,
+                        "passing_grade": 82.63,
+                        "description": "Program studi Desain Interior (S1) di Institut Seni Indonesia (ISI) Denpasar. Passing grade acuan SNBP adalah 82.63 dengan peminatan rumpun Seni & Desain."
+                },
+                "Produksi Film dan Televisi (D4)": {
+                        "quota": 80,
+                        "peminatan": "Seni & Desain",
+                        "status": "Cukup Kompetitif",
+                        "competition": 76,
+                        "alumni": 78,
+                        "passing_grade": 82.42,
+                        "description": "Program studi Produksi Film dan Televisi (D4) di Institut Seni Indonesia (ISI) Denpasar. Passing grade acuan SNBP adalah 82.42 dengan peminatan rumpun Seni & Desain."
+                }
         },
-        "Institut Teknologi Bandung": {
-          "Teknik Sipil": {
-            quota: 110,
-            peminatan: "IPA / MIPA",
-            status: "Sangat Kompetitif",
-            competition: 90,
-            alumni: 86,
-            description:
-              "Teknik Sipil memiliki rivalitas tinggi. Siswa dengan kemampuan matematika dan fisika yang kuat serta portofolio relevan berpeluang masuk dengan rasionalitas tinggi.",
-          },
-          "Desain Produk": {
-            quota: 95,
-            peminatan: "IPA / Seni",
-            status: "Kompetitif",
-            competition: 74,
-            alumni: 76,
-            description:
-              "Desain Produk lebih menonjolkan kreativitas dan portofolio. Keseimbangan antara prestasi akademik dan karya visual sangat menentukan.",
-          },
-          "Teknik Informatika": {
-            quota: 140,
-            peminatan: "IPA / MIPA",
-            status: "Sangat Kompetitif",
-            competition: 94,
-            alumni: 92,
-            description:
-              "Teknik Informatika ITB adalah jurusan yang sangat kompetitif. Kemampuan matematika, logika, dan prestasi teknologi akan sangat menentukan.",
-          },
+        "Institut Seni Indonesia (ISI) Surakarta": {
+                "Animasi (D4)": {
+                        "quota": 80,
+                        "peminatan": "Seni & Desain",
+                        "status": "Cukup Kompetitif",
+                        "competition": 81,
+                        "alumni": 83,
+                        "passing_grade": 84.74,
+                        "description": "Program studi Animasi (D4) di Institut Seni Indonesia (ISI) Surakarta. Passing grade acuan SNBP adalah 84.74 dengan peminatan rumpun Seni & Desain."
+                },
+                "Koreografi Inkuiri (S1)": {
+                        "quota": 120,
+                        "peminatan": "Umum",
+                        "status": "Cukup Kompetitif",
+                        "competition": 80,
+                        "alumni": 82,
+                        "passing_grade": 84.52,
+                        "description": "Program studi Koreografi Inkuiri (S1) di Institut Seni Indonesia (ISI) Surakarta. Passing grade acuan SNBP adalah 84.52 dengan peminatan rumpun Umum."
+                },
+                "Seni Intermedia (S1)": {
+                        "quota": 120,
+                        "peminatan": "Seni & Desain",
+                        "status": "Cukup Kompetitif",
+                        "competition": 78,
+                        "alumni": 81,
+                        "passing_grade": 83.67,
+                        "description": "Program studi Seni Intermedia (S1) di Institut Seni Indonesia (ISI) Surakarta. Passing grade acuan SNBP adalah 83.67 dengan peminatan rumpun Seni & Desain."
+                },
+                "Desain Komunikasi Visual (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Cukup Kompetitif",
+                        "competition": 78,
+                        "alumni": 80,
+                        "passing_grade": 83.35,
+                        "description": "Program studi Desain Komunikasi Visual (S1) di Institut Seni Indonesia (ISI) Surakarta. Passing grade acuan SNBP adalah 83.35 dengan peminatan rumpun Sosial & Humaniora."
+                }
+        },
+        "Institut Seni Indonesia (ISI) Yogyakarta": {
+                "Produksi Film dan Televisi (D4)": {
+                        "quota": 80,
+                        "peminatan": "Seni & Desain",
+                        "status": "Kompetitif",
+                        "competition": 85,
+                        "alumni": 86,
+                        "passing_grade": 86.7,
+                        "description": "Program studi Produksi Film dan Televisi (D4) di Institut Seni Indonesia (ISI) Yogyakarta. Passing grade acuan SNBP adalah 86.70 dengan peminatan rumpun Seni & Desain."
+                },
+                "Desain Media (D4)": {
+                        "quota": 80,
+                        "peminatan": "Seni & Desain",
+                        "status": "Kompetitif",
+                        "competition": 85,
+                        "alumni": 86,
+                        "passing_grade": 86.53,
+                        "description": "Program studi Desain Media (D4) di Institut Seni Indonesia (ISI) Yogyakarta. Passing grade acuan SNBP adalah 86.53 dengan peminatan rumpun Seni & Desain."
+                },
+                "Desain Komunikasi Visual (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Kompetitif",
+                        "competition": 85,
+                        "alumni": 86,
+                        "passing_grade": 86.48,
+                        "description": "Program studi Desain Komunikasi Visual (S1) di Institut Seni Indonesia (ISI) Yogyakarta. Passing grade acuan SNBP adalah 86.48 dengan peminatan rumpun Sosial & Humaniora."
+                },
+                "Televisi dan Film (S1)": {
+                        "quota": 120,
+                        "peminatan": "Seni & Desain",
+                        "status": "Kompetitif",
+                        "competition": 84,
+                        "alumni": 85,
+                        "passing_grade": 86.19,
+                        "description": "Program studi Televisi dan Film (S1) di Institut Seni Indonesia (ISI) Yogyakarta. Passing grade acuan SNBP adalah 86.19 dengan peminatan rumpun Seni & Desain."
+                }
+        },
+        "Institut Teknologi Bandung (ITB)": {
+                "Sekolah Teknik Elektro dan Informatika - Komputasi (STEI-K) (S1)": {
+                        "quota": 120,
+                        "peminatan": "Teknik / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 95.2,
+                        "description": "Program studi Sekolah Teknik Elektro dan Informatika - Komputasi (STEI-K) (S1) di Institut Teknologi Bandung (ITB). Passing grade acuan SNBP nasional adalah 95.20 dengan persaingan yang sangat kompetitif."
+                },
+                "Teknik Informatika (S1)": {
+                        "quota": 120,
+                        "peminatan": "Teknik / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 95.1,
+                        "description": "Program studi Teknik Informatika (S1) di Institut Teknologi Bandung (ITB). Passing grade acuan SNBP nasional adalah 95.10 dengan persaingan yang sangat kompetitif."
+                },
+                "Sekolah Bisnis dan Manajemen (SBM) (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.0,
+                        "description": "Program studi Sekolah Bisnis dan Manajemen (SBM) (S1) di Institut Teknologi Bandung (ITB). Passing grade acuan SNBP nasional adalah 94.00 dengan persaingan yang sangat kompetitif."
+                },
+                "Sistem Informasi (S1)": {
+                        "quota": 120,
+                        "peminatan": "Teknik / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.5,
+                        "description": "Program studi Sistem Informasi (S1) di Institut Teknologi Bandung (ITB). Passing grade acuan SNBP nasional adalah 93.50 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Institut Teknologi Sepuluh Nopember (ITS)": {
+                "KEDOKTERAN (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 93.67,
+                        "description": "Program studi KEDOKTERAN (S1) di Institut Teknologi Sepuluh Nopember (ITS). Passing grade acuan SNBP adalah 93.67 dengan peminatan rumpun Kedokteran."
+                },
+                "TEKNIK INFORMATIKA (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.92,
+                        "description": "Program studi TEKNIK INFORMATIKA (S1) di Institut Teknologi Sepuluh Nopember (ITS). Passing grade acuan SNBP adalah 91.92 dengan peminatan rumpun MIPA / Komputer."
+                },
+                "BIOTEKNOLOGI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Umum",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.74,
+                        "description": "Program studi BIOTEKNOLOGI (S1) di Institut Teknologi Sepuluh Nopember (ITS). Passing grade acuan SNBP adalah 91.74 dengan peminatan rumpun Umum."
+                },
+                "SISTEM INFORMASI (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.73,
+                        "description": "Program studi SISTEM INFORMASI (S1) di Institut Teknologi Sepuluh Nopember (ITS). Passing grade acuan SNBP adalah 91.73 dengan peminatan rumpun MIPA / Komputer."
+                }
+        },
+        "UPN Veteran Jawa Timur": {
+                "BAHASA INGGRIS UNTUK KOMUNIKASI BISNIS DAN PROFESIONAL ADMINISTRASI BISNIS (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.69,
+                        "description": "Program studi BAHASA INGGRIS UNTUK KOMUNIKASI BISNIS DAN PROFESIONAL ADMINISTRASI BISNIS (S1) di UPN Veteran Jawa Timur. Passing grade acuan SNBP adalah 91.69 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "MANAJEMEN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.69,
+                        "description": "Program studi MANAJEMEN (S1) di UPN Veteran Jawa Timur. Passing grade acuan SNBP adalah 91.69 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "ILMU KOMUNIKASI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 96,
+                        "alumni": 95,
+                        "passing_grade": 91.49,
+                        "description": "Program studi ILMU KOMUNIKASI (S1) di UPN Veteran Jawa Timur. Passing grade acuan SNBP adalah 91.49 dengan peminatan rumpun Sosial & Humaniora."
+                },
+                "AKUNTANSI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 96,
+                        "alumni": 94,
+                        "passing_grade": 91.34,
+                        "description": "Program studi AKUNTANSI (S1) di UPN Veteran Jawa Timur. Passing grade acuan SNBP adalah 91.34 dengan peminatan rumpun Ekonomi & Bisnis."
+                }
+        },
+        "UPN Veteran Yogyakarta": {
+                "TEKNIK PERTAMBANGAN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Teknik",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.75,
+                        "description": "Program studi TEKNIK PERTAMBANGAN (S1) di UPN Veteran Yogyakarta. Passing grade acuan SNBP adalah 91.75 dengan peminatan rumpun Teknik."
+                },
+                "MANAJEMEN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.61,
+                        "description": "Program studi MANAJEMEN (S1) di UPN Veteran Yogyakarta. Passing grade acuan SNBP adalah 91.61 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "AKUNTANSI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.55,
+                        "description": "Program studi AKUNTANSI (S1) di UPN Veteran Yogyakarta. Passing grade acuan SNBP adalah 91.55 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "TEKNIK INFORMATIKA (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 96,
+                        "alumni": 95,
+                        "passing_grade": 91.41,
+                        "description": "Program studi TEKNIK INFORMATIKA (S1) di UPN Veteran Yogyakarta. Passing grade acuan SNBP adalah 91.41 dengan peminatan rumpun MIPA / Komputer."
+                }
+        },
+        "Universitas Airlangga (UNAIR)": {
+                "KEDOKTERAN (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 92.76,
+                        "description": "Program studi KEDOKTERAN (S1) di Universitas Airlangga (UNAIR). Passing grade acuan SNBP adalah 92.76 dengan peminatan rumpun Kedokteran."
+                },
+                "FARMASI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Kesehatan",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 93,
+                        "passing_grade": 90.71,
+                        "description": "Program studi FARMASI (S1) di Universitas Airlangga (UNAIR). Passing grade acuan SNBP adalah 90.71 dengan peminatan rumpun Kesehatan."
+                },
+                "ILMU HUKUM (S1)": {
+                        "quota": 120,
+                        "peminatan": "Hukum",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 93,
+                        "passing_grade": 90.71,
+                        "description": "Program studi ILMU HUKUM (S1) di Universitas Airlangga (UNAIR). Passing grade acuan SNBP adalah 90.71 dengan peminatan rumpun Hukum."
+                },
+                "MANAJEMEN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 93,
+                        "passing_grade": 90.71,
+                        "description": "Program studi MANAJEMEN (S1) di Universitas Airlangga (UNAIR). Passing grade acuan SNBP adalah 90.71 dengan peminatan rumpun Ekonomi & Bisnis."
+                }
+        },
+        "Universitas Andalas (UNAND)": {
+                "Pendidikan Dokter (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.0,
+                        "description": "Program studi Pendidikan Dokter (S1) di Universitas Andalas (UNAND). Passing grade acuan SNBP nasional adalah 94.00 dengan persaingan yang sangat kompetitif."
+                },
+                "Ilmu Hukum (S1)": {
+                        "quota": 120,
+                        "peminatan": "Hukum",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 96,
+                        "passing_grade": 90.9,
+                        "description": "Program studi Ilmu Hukum (S1) di Universitas Andalas (UNAND). Passing grade acuan SNBP nasional adalah 90.90 dengan persaingan yang sangat kompetitif."
+                },
+                "Farmasi (S1)": {
+                        "quota": 120,
+                        "peminatan": "Kesehatan",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 90.8,
+                        "description": "Program studi Farmasi (S1) di Universitas Andalas (UNAND). Passing grade acuan SNBP nasional adalah 90.80 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 90.7,
+                        "description": "Program studi Manajemen (S1) di Universitas Andalas (UNAND). Passing grade acuan SNBP nasional adalah 90.70 dengan persaingan yang sangat kompetitif."
+                }
         },
         "Universitas Brawijaya": {
-          Manajemen: {
-            quota: 220,
-            peminatan: "IPS / Sosial",
-            status: "Cukup Kompetitif",
-            competition: 70,
-            alumni: 78,
-            description:
-              "Manajemen masih memberikan peluang yang cukup luas dengan penilaian yang berimbang pada akademik dan soft skill.",
-          },
-          Agribisnis: {
-            quota: 170,
-            peminatan: "IPA / Pertanian",
-            status: "Kompetitif",
-            competition: 79,
-            alumni: 80,
-            description:
-              "Agribisnis cenderung cocok untuk siswa dengan minat pada pertanian dan analisis lingkungan. Akademik dan minat bidang ini sangat berpengaruh.",
-          },
-          "Kedokteran Hewan": {
-            quota: 80,
-            peminatan: "IPA / MIPA",
-            status: "Kompetitif",
-            competition: 85,
-            alumni: 83,
-            description:
-              "Kedokteran Hewan memiliki kebutuhan akademik yang tinggi, namun peluangnya lebih realistis dibandingkan program kedokteran umum.",
-          },
+                "KEDOKTERAN (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 93.57,
+                        "description": "Program studi KEDOKTERAN (S1) di Universitas Brawijaya. Passing grade acuan SNBP adalah 93.57 dengan peminatan rumpun Kedokteran."
+                },
+                "TEKNIK INFORMATIKA (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 92.41,
+                        "description": "Program studi TEKNIK INFORMATIKA (S1) di Universitas Brawijaya. Passing grade acuan SNBP adalah 92.41 dengan peminatan rumpun MIPA / Komputer."
+                },
+                "ADMINISTRASI BISNIS (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.86,
+                        "description": "Program studi ADMINISTRASI BISNIS (S1) di Universitas Brawijaya. Passing grade acuan SNBP adalah 91.86 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "HUBUNGAN INTERNASIONAL (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.75,
+                        "description": "Program studi HUBUNGAN INTERNASIONAL (S1) di Universitas Brawijaya. Passing grade acuan SNBP adalah 91.75 dengan peminatan rumpun Sosial & Humaniora."
+                }
         },
-      };
+        "Universitas Diponegoro (UNDIP)": {
+                "Kedokteran (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.7,
+                        "description": "Program studi Kedokteran (S1) di Universitas Diponegoro (UNDIP). Passing grade acuan SNBP nasional adalah 94.70 dengan persaingan yang sangat kompetitif."
+                },
+                "Informatika (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.2,
+                        "description": "Program studi Informatika (S1) di Universitas Diponegoro (UNDIP). Passing grade acuan SNBP nasional adalah 93.20 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 92.8,
+                        "description": "Program studi Manajemen (S1) di Universitas Diponegoro (UNDIP). Passing grade acuan SNBP nasional adalah 92.80 dengan persaingan yang sangat kompetitif."
+                },
+                "Psikologi (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 92.6,
+                        "description": "Program studi Psikologi (S1) di Universitas Diponegoro (UNDIP). Passing grade acuan SNBP nasional adalah 92.60 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Universitas Gadjah Mada (UGM)": {
+                "Kedokteran (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 95.42,
+                        "description": "Program studi Kedokteran (S1) di Universitas Gadjah Mada (UGM). Passing grade acuan SNBP nasional adalah 95.42 dengan persaingan yang sangat kompetitif."
+                },
+                "Hubungan Internasional (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.25,
+                        "description": "Program studi Hubungan Internasional (S1) di Universitas Gadjah Mada (UGM). Passing grade acuan SNBP nasional adalah 94.25 dengan persaingan yang sangat kompetitif."
+                },
+                "Teknologi Informasi (S1)": {
+                        "quota": 120,
+                        "peminatan": "Teknik / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.2,
+                        "description": "Program studi Teknologi Informasi (S1) di Universitas Gadjah Mada (UGM). Passing grade acuan SNBP nasional adalah 94.20 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.1,
+                        "description": "Program studi Manajemen (S1) di Universitas Gadjah Mada (UGM). Passing grade acuan SNBP nasional adalah 94.10 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Universitas Hasanuddin (UNHAS)": {
+                "Pendidikan Dokter (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.5,
+                        "description": "Program studi Pendidikan Dokter (S1) di Universitas Hasanuddin (UNHAS). Passing grade acuan SNBP nasional adalah 94.50 dengan persaingan yang sangat kompetitif."
+                },
+                "Ilmu Hukum (S1)": {
+                        "quota": 120,
+                        "peminatan": "Hukum",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 91.8,
+                        "description": "Program studi Ilmu Hukum (S1) di Universitas Hasanuddin (UNHAS). Passing grade acuan SNBP nasional adalah 91.80 dengan persaingan yang sangat kompetitif."
+                },
+                "Teknik Informatika (S1)": {
+                        "quota": 120,
+                        "peminatan": "Teknik / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 91.8,
+                        "description": "Program studi Teknik Informatika (S1) di Universitas Hasanuddin (UNHAS). Passing grade acuan SNBP nasional adalah 91.80 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 91.6,
+                        "description": "Program studi Manajemen (S1) di Universitas Hasanuddin (UNHAS). Passing grade acuan SNBP nasional adalah 91.60 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Universitas Indonesia (UI)": {
+                "Pendidikan Dokter (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 95.84,
+                        "description": "Program studi Pendidikan Dokter (S1) di Universitas Indonesia (UI). Passing grade acuan SNBP nasional adalah 95.84 dengan persaingan yang sangat kompetitif."
+                },
+                "Ilmu Komputer (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.62,
+                        "description": "Program studi Ilmu Komputer (S1) di Universitas Indonesia (UI). Passing grade acuan SNBP nasional adalah 94.62 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.5,
+                        "description": "Program studi Manajemen (S1) di Universitas Indonesia (UI). Passing grade acuan SNBP nasional adalah 94.50 dengan persaingan yang sangat kompetitif."
+                },
+                "Hubungan Internasional (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.4,
+                        "description": "Program studi Hubungan Internasional (S1) di Universitas Indonesia (UI). Passing grade acuan SNBP nasional adalah 94.40 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Universitas Negeri Jember": {
+                "PENDIDIKAN DOKTER (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 93.9,
+                        "description": "Program studi PENDIDIKAN DOKTER (S1) di Universitas Negeri Jember. Passing grade acuan SNBP adalah 93.90 dengan peminatan rumpun Kedokteran."
+                },
+                "FARMASI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Kesehatan",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 94,
+                        "passing_grade": 90.88,
+                        "description": "Program studi FARMASI (S1) di Universitas Negeri Jember. Passing grade acuan SNBP adalah 90.88 dengan peminatan rumpun Kesehatan."
+                },
+                "ILMU KEPERAWATAN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Kesehatan",
+                        "status": "Sangat Kompetitif",
+                        "competition": 94,
+                        "alumni": 93,
+                        "passing_grade": 90.54,
+                        "description": "Program studi ILMU KEPERAWATAN (S1) di Universitas Negeri Jember. Passing grade acuan SNBP adalah 90.54 dengan peminatan rumpun Kesehatan."
+                },
+                "MANAJEMEN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 94,
+                        "alumni": 93,
+                        "passing_grade": 90.43,
+                        "description": "Program studi MANAJEMEN (S1) di Universitas Negeri Jember. Passing grade acuan SNBP adalah 90.43 dengan peminatan rumpun Ekonomi & Bisnis."
+                }
+        },
+        "Universitas Negeri Malang": {
+                "KEDOKTERAN (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 93.92,
+                        "description": "Program studi KEDOKTERAN (S1) di Universitas Negeri Malang. Passing grade acuan SNBP adalah 93.92 dengan peminatan rumpun Kedokteran."
+                },
+                "MANAJEMEN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 94,
+                        "passing_grade": 91.0,
+                        "description": "Program studi MANAJEMEN (S1) di Universitas Negeri Malang. Passing grade acuan SNBP adalah 91.00 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "PSIKOLOGI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 94,
+                        "passing_grade": 90.94,
+                        "description": "Program studi PSIKOLOGI (S1) di Universitas Negeri Malang. Passing grade acuan SNBP adalah 90.94 dengan peminatan rumpun Sosial & Humaniora."
+                },
+                "ILMU KESEHATAN MASYARAKAT (S1)": {
+                        "quota": 120,
+                        "peminatan": "Kesehatan",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 93,
+                        "passing_grade": 90.75,
+                        "description": "Program studi ILMU KESEHATAN MASYARAKAT (S1) di Universitas Negeri Malang. Passing grade acuan SNBP adalah 90.75 dengan peminatan rumpun Kesehatan."
+                }
+        },
+        "Universitas Negeri Semarang": {
+                "Pendidikan Dokter (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.4,
+                        "description": "Program studi Pendidikan Dokter (S1) di Universitas Negeri Semarang. Passing grade acuan SNBP nasional adalah 93.40 dengan persaingan yang sangat kompetitif."
+                },
+                "Teknik Informatika (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 91.2,
+                        "description": "Program studi Teknik Informatika (S1) di Universitas Negeri Semarang. Passing grade acuan SNBP nasional adalah 91.20 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 91.1,
+                        "description": "Program studi Manajemen (S1) di Universitas Negeri Semarang. Passing grade acuan SNBP nasional adalah 91.10 dengan persaingan yang sangat kompetitif."
+                },
+                "Psikologi (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 96,
+                        "passing_grade": 90.9,
+                        "description": "Program studi Psikologi (S1) di Universitas Negeri Semarang. Passing grade acuan SNBP nasional adalah 90.90 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Universitas Negeri Surabaya": {
+                "MANAJEMEN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 94,
+                        "passing_grade": 90.91,
+                        "description": "Program studi MANAJEMEN (S1) di Universitas Negeri Surabaya. Passing grade acuan SNBP adalah 90.91 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "PSIKOLOGI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 93,
+                        "passing_grade": 90.73,
+                        "description": "Program studi PSIKOLOGI (S1) di Universitas Negeri Surabaya. Passing grade acuan SNBP adalah 90.73 dengan peminatan rumpun Sosial & Humaniora."
+                },
+                "AKUNTANSI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 93,
+                        "passing_grade": 90.67,
+                        "description": "Program studi AKUNTANSI (S1) di Universitas Negeri Surabaya. Passing grade acuan SNBP adalah 90.67 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "ILMU KOMUNIKASI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 94,
+                        "alumni": 93,
+                        "passing_grade": 90.65,
+                        "description": "Program studi ILMU KOMUNIKASI (S1) di Universitas Negeri Surabaya. Passing grade acuan SNBP adalah 90.65 dengan peminatan rumpun Sosial & Humaniora."
+                }
+        },
+        "Universitas Negeri Yogyakarta (UNY)": {
+                "KEDOKTERAN (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 92.99,
+                        "description": "Program studi KEDOKTERAN (S1) di Universitas Negeri Yogyakarta (UNY). Passing grade acuan SNBP adalah 92.99 dengan peminatan rumpun Kedokteran."
+                },
+                "MANAJEMEN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 94,
+                        "passing_grade": 90.94,
+                        "description": "Program studi MANAJEMEN (S1) di Universitas Negeri Yogyakarta (UNY). Passing grade acuan SNBP adalah 90.94 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "PENDIDIKAN GURU SEKOLAH DASAR (S1)": {
+                        "quota": 120,
+                        "peminatan": "Kependidikan",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 94,
+                        "passing_grade": 90.93,
+                        "description": "Program studi PENDIDIKAN GURU SEKOLAH DASAR (S1) di Universitas Negeri Yogyakarta (UNY). Passing grade acuan SNBP adalah 90.93 dengan peminatan rumpun Kependidikan."
+                },
+                "PSIKOLOGI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 95,
+                        "alumni": 94,
+                        "passing_grade": 90.88,
+                        "description": "Program studi PSIKOLOGI (S1) di Universitas Negeri Yogyakarta (UNY). Passing grade acuan SNBP adalah 90.88 dengan peminatan rumpun Sosial & Humaniora."
+                }
+        },
+        "Universitas Padjadjaran (UNPAD)": {
+                "Pendidikan Dokter (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 95.1,
+                        "description": "Program studi Pendidikan Dokter (S1) di Universitas Padjadjaran (UNPAD). Passing grade acuan SNBP nasional adalah 95.10 dengan persaingan yang sangat kompetitif."
+                },
+                "Psikologi (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.6,
+                        "description": "Program studi Psikologi (S1) di Universitas Padjadjaran (UNPAD). Passing grade acuan SNBP nasional adalah 93.60 dengan persaingan yang sangat kompetitif."
+                },
+                "Teknik Informatika (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.4,
+                        "description": "Program studi Teknik Informatika (S1) di Universitas Padjadjaran (UNPAD). Passing grade acuan SNBP nasional adalah 93.40 dengan persaingan yang sangat kompetitif."
+                },
+                "Hubungan Internasional (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.2,
+                        "description": "Program studi Hubungan Internasional (S1) di Universitas Padjadjaran (UNPAD). Passing grade acuan SNBP nasional adalah 93.20 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Universitas Pendidikan Indonesia (UPI)": {
+                "Ilmu Komputer (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 91.5,
+                        "description": "Program studi Ilmu Komputer (S1) di Universitas Pendidikan Indonesia (UPI). Passing grade acuan SNBP nasional adalah 91.50 dengan persaingan yang sangat kompetitif."
+                },
+                "Psikologi (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 91.2,
+                        "description": "Program studi Psikologi (S1) di Universitas Pendidikan Indonesia (UPI). Passing grade acuan SNBP nasional adalah 91.20 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 96,
+                        "passing_grade": 91.0,
+                        "description": "Program studi Manajemen (S1) di Universitas Pendidikan Indonesia (UPI). Passing grade acuan SNBP nasional adalah 91.00 dengan persaingan yang sangat kompetitif."
+                },
+                "PGSD (S1)": {
+                        "quota": 120,
+                        "peminatan": "Kependidikan",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 90.8,
+                        "description": "Program studi PGSD (S1) di Universitas Pendidikan Indonesia (UPI). Passing grade acuan SNBP nasional adalah 90.80 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Universitas Sebelas Maret (UNS)": {
+                "KEDOKTERAN (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 93.32,
+                        "description": "Program studi KEDOKTERAN (S1) di Universitas Sebelas Maret (UNS). Passing grade acuan SNBP adalah 93.32 dengan peminatan rumpun Kedokteran."
+                },
+                "INFORMATIKA (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 96,
+                        "passing_grade": 92.56,
+                        "description": "Program studi INFORMATIKA (S1) di Universitas Sebelas Maret (UNS). Passing grade acuan SNBP adalah 92.56 dengan peminatan rumpun MIPA / Komputer."
+                },
+                "PSIKOLOGI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Sosial & Humaniora",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.83,
+                        "description": "Program studi PSIKOLOGI (S1) di Universitas Sebelas Maret (UNS). Passing grade acuan SNBP adalah 91.83 dengan peminatan rumpun Sosial & Humaniora."
+                },
+                "ILMU HUKUM (S1)": {
+                        "quota": 120,
+                        "peminatan": "Hukum",
+                        "status": "Sangat Kompetitif",
+                        "competition": 96,
+                        "alumni": 95,
+                        "passing_grade": 91.4,
+                        "description": "Program studi ILMU HUKUM (S1) di Universitas Sebelas Maret (UNS). Passing grade acuan SNBP adalah 91.40 dengan peminatan rumpun Hukum."
+                }
+        },
+        "Universitas Sriwijaya (UNSRI)": {
+                "Pendidikan Dokter (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.9,
+                        "description": "Program studi Pendidikan Dokter (S1) di Universitas Sriwijaya (UNSRI). Passing grade acuan SNBP nasional adalah 93.90 dengan persaingan yang sangat kompetitif."
+                },
+                "Ilmu Hukum (S1)": {
+                        "quota": 120,
+                        "peminatan": "Hukum",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 90.8,
+                        "description": "Program studi Ilmu Hukum (S1) di Universitas Sriwijaya (UNSRI). Passing grade acuan SNBP nasional adalah 90.80 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 90.8,
+                        "description": "Program studi Manajemen (S1) di Universitas Sriwijaya (UNSRI). Passing grade acuan SNBP nasional adalah 90.80 dengan persaingan yang sangat kompetitif."
+                },
+                "Teknik Informatika (S1)": {
+                        "quota": 120,
+                        "peminatan": "Teknik / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 90.8,
+                        "description": "Program studi Teknik Informatika (S1) di Universitas Sriwijaya (UNSRI). Passing grade acuan SNBP nasional adalah 90.80 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Universitas Sumatera Utara (USU)": {
+                "Pendidikan Dokter (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 94.2,
+                        "description": "Program studi Pendidikan Dokter (S1) di Universitas Sumatera Utara (USU). Passing grade acuan SNBP nasional adalah 94.20 dengan persaingan yang sangat kompetitif."
+                },
+                "Ilmu Hukum (S1)": {
+                        "quota": 120,
+                        "peminatan": "Hukum",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 91.6,
+                        "description": "Program studi Ilmu Hukum (S1) di Universitas Sumatera Utara (USU). Passing grade acuan SNBP nasional adalah 91.60 dengan persaingan yang sangat kompetitif."
+                },
+                "Teknologi Informasi (S1)": {
+                        "quota": 120,
+                        "peminatan": "Teknik / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 91.5,
+                        "description": "Program studi Teknologi Informasi (S1) di Universitas Sumatera Utara (USU). Passing grade acuan SNBP nasional adalah 91.50 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 91.4,
+                        "description": "Program studi Manajemen (S1) di Universitas Sumatera Utara (USU). Passing grade acuan SNBP nasional adalah 91.40 dengan persaingan yang sangat kompetitif."
+                }
+        },
+        "Universitas Trunojoyo Madura": {
+                "TEKNIK INFORMATIKA (S1)": {
+                        "quota": 120,
+                        "peminatan": "MIPA / Komputer",
+                        "status": "Sangat Kompetitif",
+                        "competition": 97,
+                        "alumni": 95,
+                        "passing_grade": 91.53,
+                        "description": "Program studi TEKNIK INFORMATIKA (S1) di Universitas Trunojoyo Madura. Passing grade acuan SNBP adalah 91.53 dengan peminatan rumpun MIPA / Komputer."
+                },
+                "PGSD (S1)": {
+                        "quota": 120,
+                        "peminatan": "Kependidikan",
+                        "status": "Kompetitif",
+                        "competition": 92,
+                        "alumni": 91,
+                        "passing_grade": 89.46,
+                        "description": "Program studi PGSD (S1) di Universitas Trunojoyo Madura. Passing grade acuan SNBP adalah 89.46 dengan peminatan rumpun Kependidikan."
+                },
+                "MANAJEMEN (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Kompetitif",
+                        "competition": 92,
+                        "alumni": 91,
+                        "passing_grade": 89.4,
+                        "description": "Program studi MANAJEMEN (S1) di Universitas Trunojoyo Madura. Passing grade acuan SNBP adalah 89.40 dengan peminatan rumpun Ekonomi & Bisnis."
+                },
+                "AKUNTANSI (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Kompetitif",
+                        "competition": 91,
+                        "alumni": 90,
+                        "passing_grade": 89.15,
+                        "description": "Program studi AKUNTANSI (S1) di Universitas Trunojoyo Madura. Passing grade acuan SNBP adalah 89.15 dengan peminatan rumpun Ekonomi & Bisnis."
+                }
+        },
+        "Universitas Udayana (UNUD)": {
+                "Pendidikan Dokter (S1)": {
+                        "quota": 60,
+                        "peminatan": "Kedokteran",
+                        "status": "Sangat Kompetitif",
+                        "competition": 98,
+                        "alumni": 97,
+                        "passing_grade": 93.8,
+                        "description": "Program studi Pendidikan Dokter (S1) di Universitas Udayana (UNUD). Passing grade acuan SNBP nasional adalah 93.80 dengan persaingan yang sangat kompetitif."
+                },
+                "Ilmu Hukum (S1)": {
+                        "quota": 120,
+                        "peminatan": "Hukum",
+                        "status": "Sangat Kompetitif",
+                        "competition": 96,
+                        "alumni": 95,
+                        "passing_grade": 90.5,
+                        "description": "Program studi Ilmu Hukum (S1) di Universitas Udayana (UNUD). Passing grade acuan SNBP nasional adalah 90.50 dengan persaingan yang sangat kompetitif."
+                },
+                "Farmasi (S1)": {
+                        "quota": 120,
+                        "peminatan": "Kesehatan",
+                        "status": "Sangat Kompetitif",
+                        "competition": 96,
+                        "alumni": 95,
+                        "passing_grade": 90.4,
+                        "description": "Program studi Farmasi (S1) di Universitas Udayana (UNUD). Passing grade acuan SNBP nasional adalah 90.40 dengan persaingan yang sangat kompetitif."
+                },
+                "Manajemen (S1)": {
+                        "quota": 120,
+                        "peminatan": "Ekonomi & Bisnis",
+                        "status": "Sangat Kompetitif",
+                        "competition": 96,
+                        "alumni": 95,
+                        "passing_grade": 90.4,
+                        "description": "Program studi Manajemen (S1) di Universitas Udayana (UNUD). Passing grade acuan SNBP nasional adalah 90.40 dengan persaingan yang sangat kompetitif."
+                }
+        }
+};
 
       const ptnSelect = document.getElementById("ptn");
       const prodiSelect = document.getElementById("prodi");
